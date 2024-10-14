@@ -29,6 +29,7 @@ const MyProfile = () => {
 
    const handleDelete = async (post) => {
        const hasConfirm = confirm("Are you sure you want to delete this prompt?");
+       console.log("This is a test comment");
 
        if (hasConfirm) {
         try {
