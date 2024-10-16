@@ -15,6 +15,14 @@ const CreatePrompt = () => {
         tag: "",
     })
 
+    if(!session) {
+        return (
+            <div className="flex items-center justify-center h-screen">
+                <p className="text-2xl font-satoshi font-semibold text-gray-900">Please sign in to continue</p>
+            </div>
+        )
+    }
+
     const createPrompt = async (e) => {
            e.preventDefault();
            setSubmitting(true);
