@@ -27,6 +27,7 @@ const Feed = ({data}) => {
 
    useEffect(() => {
        setallPosts(data);
+       console.log("This is FEED DATA:",data);  
       //  console.log("This is FEED DATA:",data);
    },[]);
 
