@@ -5,6 +5,7 @@ import PromptCard from "./PromptCard";
 import { set } from "mongoose";
 
 const PromptCardList = ({data, handleTagClick}) => {
+  // console.log("THIS IS PROMPT LIST DATA",data);
   return (
     <div className="mt-16 prompt_layout">
       {data.map((post) => (
@@ -18,30 +19,35 @@ const PromptCardList = ({data, handleTagClick}) => {
   )
 }
 
-const Feed = () => {
+const Feed = ({data}) => {
    const [searchText,setSearchText] = useState("");
    const [allPosts,setallPosts] = useState([]); 
    const [searchTimeout, setSearchTimeout] = useState(null);
    const [searchedResults, setSearchedResults] = useState([]);
 
-
    useEffect(() => {
-     const fetchPosts = async () => {
-      const response = await fetch('/api/prompt',
-      {
-       cache: 'no-store'
-      }
-
-); 
-      const data = await response.json();
-      
-      console.log(data);
-      setallPosts(data);
-     };
-      
-     fetchPosts();
-      
+       setallPosts(data);
+      //  console.log("This is FEED DATA:",data);
    },[]);
+
+
+//    useEffect(() => {
+//      const fetchPosts = async () => {
+//       const response = await fetch('/api/prompt',
+//       {
+//        cache: 'no-store'
+//       }
+
+// ); 
+//       const data = await response.json();
+      
+//       console.log(data);
+//       setallPosts(data);
+//      };
+      
+//      fetchPosts();
+      
+//    },[]);
 
    const filterPrompts = (searchText) => {
     const regex = new RegExp(searchText,"i");
