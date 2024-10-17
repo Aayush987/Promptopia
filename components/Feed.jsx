@@ -27,7 +27,7 @@ const Feed = () => {
    const [searchedResults, setSearchedResults] = useState([]);
 
    const fetchPosts = async () => {
-      const response = await fetch("/api/prompt", {
+      const response = await fetch("https://promptopia-bay-nu.vercel.app/api/prompt", {
         cache: 'no-store'
       });
       const data = await response.json();
