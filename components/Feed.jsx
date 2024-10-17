@@ -5,6 +5,7 @@ import PromptCard from "./PromptCard";
 import { set } from "mongoose";
 
 const PromptCardList = ({data, handleTagClick}) => {
+  console.log(data);
   // console.log("THIS IS PROMPT LIST DATA",data);
   return (
     <div className="mt-16 prompt_layout">
@@ -19,16 +20,23 @@ const PromptCardList = ({data, handleTagClick}) => {
   )
 }
 
-const Feed = ({data}) => {
+const Feed = () => {
    const [searchText,setSearchText] = useState("");
    const [allPosts,setallPosts] = useState([]); 
    const [searchTimeout, setSearchTimeout] = useState(null);
    const [searchedResults, setSearchedResults] = useState([]);
 
+   const fetchPosts = async () => {
+      const response = await fetch("/api/prompt");
+      const data = await response.json();
+
+      setallPosts(data);
+      console.log(data);
+   }
+
    useEffect(() => {
-       setallPosts(data);
-       console.log("This is FEED DATA:",data);  
-      //  console.log("This is FEED DATA:",data);
+       fetchPosts();
+       
    },[]);
 
 
