@@ -8,6 +8,7 @@ try {
     const prompts = await Prompt.find({
         creator: params.id
     }).populate('creator')
+    console.log("profile");
 
     return new Response(JSON.stringify(prompts),{status: 200});
 } catch (error) {

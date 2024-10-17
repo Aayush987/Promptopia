@@ -42,23 +42,6 @@ const Feed = () => {
    },[]);
 
 
-//    useEffect(() => {
-//      const fetchPosts = async () => {
-//       const response = await fetch('/api/prompt',
-//       {
-//        cache: 'no-store'
-//       }
-
-// ); 
-//       const data = await response.json();
-      
-//       console.log(data);
-//       setallPosts(data);
-//      };
-      
-//      fetchPosts();
-      
-//    },[]);
 
    const filterPrompts = (searchText) => {
     const regex = new RegExp(searchText,"i");
