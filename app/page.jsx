@@ -1,3 +1,5 @@
+"use client";
+
 import Feed from "@components/Feed";
 export const dynamic = "force-dynamic";
 
