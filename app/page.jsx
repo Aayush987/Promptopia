@@ -1,7 +1,8 @@
 import Feed from "@components/Feed";
+export const dynamic = "force-dynamic";
 
 const Home = async () => {    
-   const fetchPosts = await fetch('http:localhost:3000/api/prompt', {
+   const fetchPosts = await fetch('https://promptopia-aayush987-wheat.vercel.app/api/prompt', {
     cache: 'no-store'
    })
    const data = await fetchPosts.json();
