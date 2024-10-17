@@ -1,6 +1,10 @@
 import Feed from "@components/Feed";
 
-const Home = () => {
+const Home = async () => {    
+   const fetchPosts = await fetch('https://promptopia-aayush987-wheat.vercel.app/api/prompt', {
+    cache: 'no-store'
+   })
+   const data = await fetchPosts.json();
   return (
     <section className="w-full flex-center flex-col">
         <h1 className="head_text text-center">
@@ -13,7 +17,7 @@ const Home = () => {
             world to discover, create and share creative Prompts
         </p>
 
-      <Feed />
+      <Feed data = {data} />
 
     </section>
   )
