@@ -1,34 +1,15 @@
 "use client";
-
+import PromptCardList from "@components/PromptCardList";
 import { useState, useEffect } from "react";
-import PromptCard from "./PromptCard";
-import { set } from "mongoose";
-import PromptCardList from "./PromptCardList";
 
-// const PromptCardList = ({data, handleTagClick}) => {
-//   console.log(data);
-//   // console.log("THIS IS PROMPT LIST DATA",data);
-//   return (
-//     <div className="mt-16 prompt_layout">
-//       {data?.map((post) => (
-//         <PromptCard
-//           key = {post._id}
-//           post = {post}
-//           handleTagClick = {handleTagClick}
-//         />
-//       ) )}
-//     </div>
-//   )
-// }
-
-const Feed = ({data}) => {
+const Page = () => {
    const [searchText,setSearchText] = useState("");
-   const [allPosts,setallPosts] = useState(data); 
+   const [allPosts,setallPosts] = useState([]); 
    const [searchTimeout, setSearchTimeout] = useState(null);
    const [searchedResults, setSearchedResults] = useState([]);
 
    const fetchPosts = async () => {
-      const response = await fetch("https://promptopia-bay-nu.vercel.app/api/prompt", {
+      const response = await fetch("/api/prompt", {
         cache: 'no-store'
       });
       const data = await response.json();
@@ -37,16 +18,10 @@ const Feed = ({data}) => {
       console.log(data);
    }
 
-  //  useEffect(() => {
-  //     console.log(data);
-  //  },[]);
-
-  //  useEffect(() => {
-  //   // console.log(data);
-  //     //  fetchPosts();
-  //     setallPosts(data);
-  //     // console.log("data is stored in state");
-  //  },[data]);
+   useEffect(() => {
+       fetchPosts();
+       
+   },[]);
 
 
 
@@ -78,8 +53,19 @@ const Feed = ({data}) => {
     setSearchedResults(searchResult);
   };
 
-  return (
-    <section className="feed">
+
+     return (
+        <section className="w-full flex-center flex-col">
+        <h1 className="head_text text-center">
+          Discover and Share
+            <br />
+            <span className="orange_gradient text-center">AI-Powered Prompts</span>
+        </h1>
+        <p className="desc text-center">
+            Promptopia is an open-source AI prompting tool for modern 
+            world to discover, create and share creative Prompts
+        </p>
+        <section className="feed">
       <form className="relative w-full flex-center" >
         <input type = "text" placeholder="Search For a tag or an username" value={searchText} onChange={handleSearchChange} required className="search_input peer" />
       </form>
@@ -95,7 +81,9 @@ const Feed = ({data}) => {
       )}
 
     </section>
-  )
-}
+       </section>
+     );
+};
 
-export default Feed
+
+export default Page;
