@@ -1,5 +1,6 @@
 import Feed from "@components/Feed";
 import Prompt from "@models/prompt";
+import User from "@models/user";
 import { connectToDB } from "@utils/database";
 export const dynamic = "force-dynamic";
 
